@@ -20,7 +20,6 @@ public class Planet : MonoBehaviour
     //continents
     public float noiseFrequencyContinents = 100;
     public float noiseStrengthContinents = 0.1f;
-    public float noiseThresholdContinents = -1f; //shouldn't be changed. wont work if equal or above 0
     //mountains
     public float noiseFrequencyMountains = 100;
     public float noiseStrengthMountains = 0.1f;
@@ -43,7 +42,7 @@ public class Planet : MonoBehaviour
     {
         //set noise settings
         NoiseSettings[] noiseSettings = new NoiseSettings[3];
-        noiseSettings[0] = new NoiseSettings(noiseFrequencyContinents, noiseStrengthContinents,noiseThresholdContinents);
+        noiseSettings[0] = new NoiseSettings(noiseFrequencyContinents, noiseStrengthContinents,-1);
         noiseSettings[1] = new NoiseSettings(noiseFrequencyMountains, noiseStrengthMountains,noiseThresholdMountains);
         noiseSettings[2] = new NoiseSettings(noiseFrequencyDetails, noiseStrengthDetails,noiseThresholdDetail);
 
@@ -65,7 +64,7 @@ public class Planet : MonoBehaviour
             planetMeshRenderer = planet.GetComponent<MeshRenderer>();
         }
         planetMeshRenderer.material = planetMaterial;
-        SphereGenerator.CreateIco(planet, detailLevel, noiseSettings, radius);
+        SphereGenerator.CreateIco(planet, detailLevel, noiseSettings, radius, true);
     }
 
     void createOcean()
@@ -89,7 +88,7 @@ public class Planet : MonoBehaviour
             oceanMeshRenderer = ocean.GetComponent<MeshRenderer>();
         }
         oceanMeshRenderer.material = oceanMaterial;
-        SphereGenerator.CreateIco(ocean, detailLevel, noiseSettings,oceandepth);
+        SphereGenerator.CreateIco(ocean, detailLevel, noiseSettings,oceandepth,false);
     }
   
 }

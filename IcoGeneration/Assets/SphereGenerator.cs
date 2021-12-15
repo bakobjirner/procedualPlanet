@@ -9,7 +9,7 @@ public class SphereGenerator
     //TODO: check
     private static Dictionary<long, int> middlePointIndexCache = new Dictionary<long, int>();
 
-    public static void CreateIco(GameObject gameObject, int detailLevel, NoiseSettings[] noiseSettings, float radius)
+    public static void CreateIco(GameObject gameObject, int detailLevel, NoiseSettings[] noiseSettings, float radius, bool addCollider)
     {
         //get mesh of Gameobject
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
@@ -101,6 +101,17 @@ public class SphereGenerator
         mesh.RecalculateTangents();
         mesh.RecalculateNormals();
 
+        if (addCollider)
+        {
+            if (gameObject.GetComponent<MeshCollider>() != null)
+            {
+                gameObject.GetComponent<MeshCollider>().sharedMesh = mesh;
+            }
+            else
+            {
+                gameObject.AddComponent<MeshCollider>().sharedMesh = mesh;
+            }
+        }
     }
 
 
