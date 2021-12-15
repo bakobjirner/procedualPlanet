@@ -119,8 +119,8 @@ MonoBehaviour:
     y: 30
     width: 2560
     height: 1307
-  m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 14001, y: 14042}
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
   controlID: 68
 --- !u!114 &6
@@ -274,8 +274,8 @@ MonoBehaviour:
     y: 0
     width: 803
     height: 1307
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -366,6 +366,11 @@ MonoBehaviour:
     \"409eff812890482ebec190185c81792b\"\n                },\n                \"m_SlotId\":
     0\n            },\n            \"m_InputSlot\": {\n                \"m_Node\":
     {\n                    \"m_Id\": \"fcbe5f393bc4496b99df843ea57e1e27\"\n               
+    },\n                \"m_SlotId\": 0\n            }\n        },\n        {\n           
+    \"m_OutputSlot\": {\n                \"m_Node\": {\n                    \"m_Id\":
+    \"46a381eff32e4b9dabceaa52a3f97697\"\n                },\n                \"m_SlotId\":
+    2\n            },\n            \"m_InputSlot\": {\n                \"m_Node\":
+    {\n                    \"m_Id\": \"d647fdb0c467430ab58d66fa6683d5a1\"\n               
     },\n                \"m_SlotId\": 0\n            }\n        },\n        {\n           
     \"m_OutputSlot\": {\n                \"m_Node\": {\n                    \"m_Id\":
     \"573f9a40dd3147f883c4236356b63f82\"\n                },\n                \"m_SlotId\":
@@ -1670,7 +1675,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 52fbffff143d0000
+      m_ExpandedIDs: 52fbffffbc470000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1730,9 +1735,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -32.33843, y: -6.86607, z: 27.588976}
+    m_Target: {x: 1052.0854, y: -278.78467, z: 787.45386}
     speed: 2
-    m_Value: {x: -32.33843, y: -6.86607, z: 27.588976}
+    m_Value: {x: 1052.0854, y: -278.78467, z: 787.45386}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1779,13 +1784,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.07777904, y: -0.41883165, z: 0.036013454, w: 0.9041014}
+    m_Target: {x: 0.09677937, y: 0.4666832, z: -0.05144748, w: 0.87774706}
     speed: 2
-    m_Value: {x: 0.0777185, y: -0.42015252, z: 0.03612709, w: 0.90339726}
+    m_Value: {x: 0.09405924, y: 0.46809444, z: -0.050181653, w: 0.8772242}
   m_Size:
-    m_Target: 24.23607
+    m_Target: 1067.741
     speed: 2
-    m_Value: 24.23607
+    m_Value: 1021.7617
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1848,22 +1853,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\birne\Documents\Studium_HHN\gameEngines\Solar-System-Episode_02\IcoGeneration
+  m_LastProjectPath: C:\Users\birne\Documents\GitHub\procedualPlanet\IcoGeneration
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2c6f0000
-    m_LastClickedID: 28460
-    m_ExpandedIDs: 000000006a3d000000ca9a3b
+    m_SelectedIDs: 80490000
+    m_LastClickedID: 18816
+    m_ExpandedIDs: 000000008049000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1891,7 +1896,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006a3d0000
+    m_ExpandedIDs: 0000000080490000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

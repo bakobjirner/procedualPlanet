@@ -9,7 +9,7 @@ public class SphereGenerator
     //TODO: check
     private static Dictionary<long, int> middlePointIndexCache = new Dictionary<long, int>();
 
-    public static void CreateIco(GameObject gameObject, int detailLevel, NoiseSettings[] noiseSettings)
+    public static void CreateIco(GameObject gameObject, int detailLevel, NoiseSettings[] noiseSettings, float radius)
     {
         //get mesh of Gameobject
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
@@ -25,20 +25,20 @@ public class SphereGenerator
         // create 12 vertices of a icosahedron
         float t = (1f + Mathf.Sqrt(5f)) / 2f;
 
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(-1f, t, 0f).normalized,noiseSettings) );
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(1f, t, 0f).normalized, noiseSettings));
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(-1f, -t, 0f).normalized, noiseSettings));
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(1f, -t, 0f).normalized, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(-1f, t, 0f).normalized*radius,noiseSettings) );
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(1f, t, 0f).normalized * radius, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(-1f, -t, 0f).normalized * radius, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(1f, -t, 0f).normalized * radius, noiseSettings));
 
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(0f, -1f, t).normalized, noiseSettings));
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(0f, 1f, t).normalized, noiseSettings));
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(0f, -1f, -t).normalized, noiseSettings));
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(0f, 1f, -t).normalized, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(0f, -1f, t).normalized * radius, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(0f, 1f, t).normalized * radius, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(0f, -1f, -t).normalized * radius, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(0f, 1f, -t).normalized * radius, noiseSettings));
 
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(t, 0f, -1f).normalized, noiseSettings));
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(t, 0f, 1f).normalized, noiseSettings));
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(-t, 0f, -1f).normalized, noiseSettings));
-        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(-t, 0f, 1f).normalized, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(t, 0f, -1f).normalized * radius, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(t, 0f, 1f).normalized * radius, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(-t, 0f, -1f).normalized * radius, noiseSettings));
+        vertList.Add(NoiseGenerator.ApplyNoise(new Vector3(-t, 0f, 1f).normalized * radius, noiseSettings));
 
         // create 20 triangles of the icosahedron
         List<Triangle> faces = new List<Triangle>();
@@ -72,7 +72,7 @@ public class SphereGenerator
         faces.Add(new Triangle(9, 8, 1));
 
         //subdivide to desired level
-        faces = SubdivideFaces(faces, detailLevel,noiseSettings);
+        faces = SubdivideFaces(faces, detailLevel,noiseSettings, radius);
 
         //list to array
         mesh.vertices = vertList.ToArray();
@@ -104,7 +104,7 @@ public class SphereGenerator
     }
 
 
-    private static List<Triangle> SubdivideFaces(List<Triangle> faces, int numberOfSubdivisions, NoiseSettings[] noiseSettings)
+    private static List<Triangle> SubdivideFaces(List<Triangle> faces, int numberOfSubdivisions, NoiseSettings[] noiseSettings, float radius)
     {
 
         //in case somebody enters a value that is to high. do not remove if you aren't absolutely sure what youre doing. Will 
@@ -120,9 +120,9 @@ public class SphereGenerator
             foreach (var tri in faces)
             {
                 // replace triangle by 4 triangles
-                int a = MiddlePoint(tri.v1, tri.v2, noiseSettings);
-                int b = MiddlePoint(tri.v2, tri.v3, noiseSettings);
-                int c = MiddlePoint(tri.v3, tri.v1, noiseSettings);
+                int a = MiddlePoint(tri.v1, tri.v2, noiseSettings, radius);
+                int b = MiddlePoint(tri.v2, tri.v3, noiseSettings, radius);
+                int c = MiddlePoint(tri.v3, tri.v1, noiseSettings, radius);
 
                 facesDivided.Add(new Triangle(tri.v1, a, c));
                 facesDivided.Add(new Triangle(tri.v2, b, a));
@@ -137,7 +137,7 @@ public class SphereGenerator
 
 
     // return index of vertice in the middle of p1 and p2, creates new vertice if it doesn't exist yet
-    private static int MiddlePoint(int p1, int p2, NoiseSettings[] noiseSettings)
+    private static int MiddlePoint(int p1, int p2, NoiseSettings[] noiseSettings, float radius)
     {
         // get key of searched point in dictionary by combining the indexes of the two points
         bool firstIsSmaller = p1 < p2;
@@ -165,7 +165,7 @@ public class SphereGenerator
         );
 
         //normalize point to make sure its on the sphere
-        middle = middle.normalized;
+        middle = middle.normalized * radius;
 
         //apply noise to point
         middle = NoiseGenerator.ApplyNoise(middle, noiseSettings);

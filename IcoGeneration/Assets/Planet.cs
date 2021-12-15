@@ -13,16 +13,22 @@ public class Planet : MonoBehaviour
     [Range(2,7)]
     public int detailLevel;
 
+    public float radius = 100f;
+    public float oceandepth = 100f;
+
     //noisesettings
     //continents
-    public int noiseFrequencyContinents = 100;
+    public float noiseFrequencyContinents = 100;
     public float noiseStrengthContinents = 0.1f;
+    public float noiseThresholdContinents = -1f; //shouldn't be changed. wont work if equal or above 0
     //mountains
-    public int noiseFrequencyMountains = 100;
+    public float noiseFrequencyMountains = 100;
     public float noiseStrengthMountains = 0.1f;
+    public float noiseThresholdMountains = 0f;
     //details
-    public int noiseFrequencyDetails = 100;
+    public float noiseFrequencyDetails = 100;
     public float noiseStrengthDetails = 0.1f;
+    public float noiseThresholdDetail = 0f;
 
 
     public void OnValidate()
@@ -37,9 +43,9 @@ public class Planet : MonoBehaviour
     {
         //set noise settings
         NoiseSettings[] noiseSettings = new NoiseSettings[3];
-        noiseSettings[0] = new NoiseSettings(noiseFrequencyContinents, noiseStrengthContinents);
-        noiseSettings[1] = new NoiseSettings(noiseFrequencyMountains, noiseStrengthMountains);
-        noiseSettings[2] = new NoiseSettings(noiseFrequencyDetails, noiseStrengthDetails);
+        noiseSettings[0] = new NoiseSettings(noiseFrequencyContinents, noiseStrengthContinents,noiseThresholdContinents);
+        noiseSettings[1] = new NoiseSettings(noiseFrequencyMountains, noiseStrengthMountains,noiseThresholdMountains);
+        noiseSettings[2] = new NoiseSettings(noiseFrequencyDetails, noiseStrengthDetails,noiseThresholdDetail);
 
         if (planet == null)
         {
@@ -59,7 +65,7 @@ public class Planet : MonoBehaviour
             planetMeshRenderer = planet.GetComponent<MeshRenderer>();
         }
         planetMeshRenderer.material = planetMaterial;
-        SphereGenerator.CreateIco(planet, detailLevel, noiseSettings);
+        SphereGenerator.CreateIco(planet, detailLevel, noiseSettings, radius);
     }
 
     void createOcean()
@@ -83,7 +89,7 @@ public class Planet : MonoBehaviour
             oceanMeshRenderer = ocean.GetComponent<MeshRenderer>();
         }
         oceanMeshRenderer.material = oceanMaterial;
-        SphereGenerator.CreateIco(ocean, detailLevel, noiseSettings);
+        SphereGenerator.CreateIco(ocean, detailLevel, noiseSettings,oceandepth);
     }
   
 }
