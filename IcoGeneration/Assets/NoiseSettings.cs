@@ -1,16 +1,27 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
 public class NoiseSettings
 {
-    public NoiseSettings(float frequency, float strength, float threshold)
-    {
-        this.frequency = frequency;
-        this.strength = strength;
-        this.threshold = threshold;
-    }
 
-    //frequency of the noise
-    public float frequency = 1;
-    //strength of the noise
+    [Range(1, 8)]
+    public int numberOfLayers = 1;
     public float strength = 1;
-    //value of the previous noise that has to be present for this noise to take effect, so for example mountains dont get generated under water
-    public float threshold = 0;
+    public float roughness = 1;
+    public float baseRoughness = 1;
+    public float persistance = 1;
+    public Vector3 centre;
+    public bool allowNegative = false;
+
+    public NoiseSettings(int numberOfLayers, float strength, float roughness, float baseRoughness, float persistance, Vector3 centre, bool allowNegative)
+    {
+        this.numberOfLayers = numberOfLayers;
+        this.strength = strength;
+        this.roughness = roughness;
+        this.baseRoughness = baseRoughness;
+        this.persistance = persistance;
+        this.centre = centre;
+        this.allowNegative = allowNegative;
+    }
 }
