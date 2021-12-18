@@ -18,7 +18,16 @@ public class PlanetGenerator
         PlanetGenerator.settings = settings;
         //get mesh of Gameobject
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
-        Mesh mesh = filter.mesh;
+        Mesh mesh;
+        if (filter.sharedMesh != null)
+        {
+            mesh = filter.sharedMesh;
+        }
+        else
+        {
+            mesh = new Mesh();
+            filter.sharedMesh = mesh;
+        }
         //clear mesh if not empty
         mesh.Clear();
         //set indexformat to allow for meshes with more than 65536 Vertices
@@ -80,8 +89,13 @@ public class PlanetGenerator
         //subdivide to desired level
         faces = SubdivideFaces(faces, settings.detailLevel, settings.noiseLayers, settings.radius);
 
-        //list to array
-        mesh.vertices = vertList.ToArray();
+        for (int i = 0; i < vertList.Count; i++)
+        {
+            vertList[i] = ApplyNoise(vertList[i], settings.noiseLayers);
+        }
+
+            //list to array
+            mesh.vertices = vertList.ToArray();
 
         //create the list of triangles (always 3 consecutive points in list are one triangle)
         List<int> triList = new List<int>();
@@ -179,7 +193,7 @@ public class PlanetGenerator
         );
 
         //apply noise to point
-        middle = ApplyNoise(middle, noiseLayers);
+        //middle = ApplyNoise(middle, noiseLayers);
 
         // add vertex to list
         int i = vertList.Count;

@@ -13,7 +13,17 @@ public class OceanGenerator
     {
         //get mesh of Gameobject
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
-        Mesh mesh = filter.sharedMesh;
+        Mesh mesh;
+        if (filter.sharedMesh != null)
+        {
+            mesh = filter.sharedMesh;
+        }
+        else
+        {
+            mesh = new Mesh();
+            filter.sharedMesh = mesh;
+        }
+       
         //clear mesh if not empty
         mesh.Clear();
         //set indexformat to allow for meshes with more than 65536 Vertices

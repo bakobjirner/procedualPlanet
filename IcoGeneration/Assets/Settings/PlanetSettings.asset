@@ -15,39 +15,43 @@ MonoBehaviour:
   radius: 2
   noiseLayers:
   - noiseSettings:
-      numberOfLayers: 2
-      strength: 0.06
-      roughness: 1.05
-      baseRoughness: 0.55
-      persistance: 0.54
-      centre: {x: -1.05, y: 0, z: 0}
-      allowNegative: 1
+      strength: 0.57
+      roughness: 1.02
+      centre: {x: 0, y: 0, z: 0}
+      steepness: 10.14
+      type: 0
     enabled: 1
     useFirstLayerAsMask: 0
   - noiseSettings:
-      numberOfLayers: 2
-      strength: 1.7
-      roughness: 18.88
-      baseRoughness: 0.41
-      persistance: 0.75
+      strength: 4
+      roughness: 1.78
       centre: {x: 0, y: 0, z: 0}
-      allowNegative: 0
+      steepness: 4.45
+      type: 1
     enabled: 1
     useFirstLayerAsMask: 1
-  detailLevel: 7
+  - noiseSettings:
+      strength: 0.56
+      roughness: 6.31
+      centre: {x: 1.43, y: 0, z: 0}
+      steepness: 0
+      type: 2
+    enabled: 1
+    useFirstLayerAsMask: 1
+  detailLevel: 5
   gradient:
     serializedVersion: 2
     key0: {r: 0.8113208, g: 0.78117067, b: 0.47071913, a: 1}
     key1: {r: 0.3577867, g: 0.5754717, b: 0.33931115, a: 1}
     key2: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
-    key3: {r: 0.9622642, g: 0, b: 0, a: 0}
+    key3: {r: 1, g: 1, b: 1, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 21588
-    ctime1: 36815
-    ctime2: 54741
+    ctime0: 34117
+    ctime1: 42791
+    ctime2: 56669
     ctime3: 65535
     ctime4: 0
     ctime5: 0
