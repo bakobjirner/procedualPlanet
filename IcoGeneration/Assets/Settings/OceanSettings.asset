@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800050769ba57244fb6b08eef16c4698, type: 3}
   m_Name: OceanSettings
   m_EditorClassIdentifier: 
-  oceandepth: 2.04
-  detailLevel: 5
+  oceandepth: 100.95
+  detailLevel: 7
