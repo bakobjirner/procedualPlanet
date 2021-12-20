@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69072d1464435fa4085755a9a02c2b28, type: 3}
   m_Name: PlanetSettings
   m_EditorClassIdentifier: 
-  radius: 4.14
+  radius: 200
   noiseLayers:
   - noiseSettings:
       simpleNoiseSettings:
